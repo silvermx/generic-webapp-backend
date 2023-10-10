@@ -38,12 +38,8 @@ public class WebController {
     this.jdbcTemplate = jdbcTemplate;
   }
 
-  @GetMapping("/getTuples")
+  @GetMapping("/users")
   public List<User> getTuples() {
     return this.jdbcTemplate.query("SELECT * FROM users", new UserRowMapper());
-
-    //return this.jdbcTemplate.queryForList("SELECT * FROM users").stream()
-    //    .map(m -> m.values().toString())
-    //    .collect(Collectors.toList());
   }
 }
