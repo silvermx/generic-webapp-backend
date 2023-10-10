@@ -17,10 +17,13 @@
 package com.example;
 
 import java.util.List;
-import java.util.stream.Collectors;
+//import java.util.stream.Collectors;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.domain.User;
+import com.domain.UserRowMapper;
 
 /**
  * Web app controller class for sample application. Contains a function that runs a query and
@@ -36,9 +39,11 @@ public class WebController {
   }
 
   @GetMapping("/getTuples")
-  public List<String> getTuples() {
-    return this.jdbcTemplate.queryForList("SELECT * FROM users").stream()
-        .map(m -> m.values().toString())
-        .collect(Collectors.toList());
+  public List<User> getTuples() {
+    return this.jdbcTemplate.query("SELECT * FROM users", new UserRowMapper());
+
+    //return this.jdbcTemplate.queryForList("SELECT * FROM users").stream()
+    //    .map(m -> m.values().toString())
+    //    .collect(Collectors.toList());
   }
 }
