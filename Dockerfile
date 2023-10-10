@@ -31,10 +31,10 @@ RUN mvn package -DskipTests
 FROM eclipse-temurin:17.0.8_7-jre-alpine
 
 # Copy the jar to the production image from the builder stage.
-COPY --from=builder /app/target/helloworld-*.jar /helloworld.jar
+COPY --from=builder /app/target/generic-webapp-back-*.jar /generic-webapp-back.jar
 
 # Run the web service on container startup.
-CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/helloworld.jar"]
+CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/generic-webapp-back.jar"]
 
 # [END run_helloworld_dockerfile]
 # [END cloudrun_helloworld_dockerfile]
