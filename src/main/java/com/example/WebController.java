@@ -30,7 +30,7 @@ import com.domain.UserRowMapper;
  * Web app controller class for sample application. Contains a function that runs a query and
  * displays the results.
  */
-@CrossOrigin (origins= "https://*.a.run.app/" )
+
 @RestController
 public class WebController {
 
@@ -40,6 +40,7 @@ public class WebController {
     this.jdbcTemplate = jdbcTemplate;
   }
 
+  @CrossOrigin //(origins= "https://*.a.run.app/" )
   @GetMapping("/users")
   public List<User> getTuples() {
     return this.jdbcTemplate.query("SELECT * FROM users", new UserRowMapper());
