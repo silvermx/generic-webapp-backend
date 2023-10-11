@@ -40,7 +40,7 @@ public class WebController {
     this.jdbcTemplate = jdbcTemplate;
   }
 
-  @CrossOrigin //(origins= "https://*.a.run.app/" )
+  @CrossOrigin (origins= "https://*.a.run.app/" )
   @GetMapping("/users")
   public List<User> getTuples() {
     return this.jdbcTemplate.query("SELECT * FROM users", new UserRowMapper());
