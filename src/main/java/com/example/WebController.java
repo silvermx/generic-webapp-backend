@@ -19,6 +19,7 @@ package com.example;
 import java.util.List;
 //import java.util.stream.Collectors;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +30,7 @@ import com.domain.UserRowMapper;
  * Web app controller class for sample application. Contains a function that runs a query and
  * displays the results.
  */
+@CrossOrigin (origins= "https://*.a.run.app/" )
 @RestController
 public class WebController {
 
