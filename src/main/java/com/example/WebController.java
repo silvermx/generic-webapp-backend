@@ -17,10 +17,9 @@
 package com.example;
 
 import java.util.List;
-//import java.util.stream.Collectors;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.domain.User;
@@ -32,6 +31,7 @@ import com.domain.UserRowMapper;
  */
 
 @RestController
+@RequestMapping("/api")
 public class WebController {
 
   private final JdbcTemplate jdbcTemplate;
@@ -40,7 +40,6 @@ public class WebController {
     this.jdbcTemplate = jdbcTemplate;
   }
 
-  @CrossOrigin
   @GetMapping("/users")
   public List<User> getTuples() {
     return this.jdbcTemplate.query("SELECT * FROM users", new UserRowMapper());
